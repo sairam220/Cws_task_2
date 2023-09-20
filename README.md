@@ -2,6 +2,11 @@
 
 This README provides an overview of the MultiSeller Excel File Validation App, its functionality, and how to use it.
 
+## Deployment
+
+This application is deployed on Vercel and can be accessed at the following URL: [https://sairam-cws-2.vercel.app/](https://sairam-cws-2.vercel.app/).
+
+
 ## Overview
 
 The MultiSeller Excel File Validation App is a web application built with React that allows users to upload and validate multiple types of Excel files, including "Seller_customer.xlsx" and "Seller_invoice.xlsx". The app performs data validation on the uploaded files and displays both valid and invalid data in separate tables, making it easy to identify and address data issues.
@@ -56,9 +61,6 @@ To use the MultiSeller Excel File Validation App in your project, follow these s
 
 7. You can switch between different uploaded files using the navigation menu at the top of the app.
 
-## Deployment
-
-This application is deployed on Vercel and can be accessed at the following URL: [https://sairam-cws-2.vercel.app/](https://sairam-cws-2.vercel.app/).
 
 ## Dependencies
 
