@@ -1,70 +1,77 @@
-# Getting Started with Create React App
+# MultiSeller Excel File Validation App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This README provides an overview of the MultiSeller Excel File Validation App, its functionality, and how to use it.
 
-## Available Scripts
+## Overview
 
-In the project directory, you can run:
+The MultiSeller Excel File Validation App is a web application built with React that allows users to upload and validate multiple types of Excel files, including "Seller_customer.xlsx" and "Seller_invoice.xlsx". The app performs data validation on the uploaded files and displays both valid and invalid data in separate tables, making it easy to identify and address data issues.
 
-### `npm start`
+## Features
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- Supports uploading Excel files in multiple formats, including `.xlsx`, `.xls`, and `.csv`.
+- Performs data validations based on the uploaded file's format (Seller Customer or Seller Invoice).
+- Displays valid data in a table with proper formatting.
+- Highlights and categorizes invalid data with reasons for validation failure.
+- Supports validation for various fields such as ERP code, legal name, GSTIN, PAN, invoice number, and invoice date.
+- Easily customizable with CSS styles for table formatting.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+To use the MultiSeller Excel File Validation App in your project, follow these steps:
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+1. Clone the repository:
 
-### `npm run build`
+   ```bash
+   git clone https://github.com/<username>/sairam-cws-2.git
+   ```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+2. Install dependencies:
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+   ```bash
+   cd sairam-cws-2
+   npm install
+   ```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. Start the development server:
 
-### `npm run eject`
+   ```bash
+   npm start
+   ```
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+4. Access the application in your web browser at [http://localhost:3000](http://localhost:3000).
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+## Usage
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+1. Upon accessing the application, you will see an upload form that allows you to select an Excel file for validation.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+2. Click the "Choose File" button and select an Excel file from your local system. Supported formats include `.xlsx`, `.xls`, and `.csv`.
 
-## Learn More
+3. After selecting a file, click the "Upload" button to initiate the validation process.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+4. The app will automatically detect the format of the uploaded file (Seller Customer or Seller Invoice) and perform validations accordingly.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+5. If the uploaded file is valid and matches one of the predefined formats ("Seller_customer.xlsx" or "Seller_invoice.xlsx"), the valid data will be displayed in a table with proper formatting.
 
-### Code Splitting
+6. If the uploaded file contains invalid data or does not match the expected format, the invalid data will be displayed in a separate table with corresponding reasons for validation failure.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+7. You can switch between different uploaded files using the navigation menu at the top of the app.
 
-### Analyzing the Bundle Size
+## Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+This application is deployed on Vercel and can be accessed at the following URL: [https://sairam-cws-2.vercel.app/](https://sairam-cws-2.vercel.app/).
 
-### Making a Progressive Web App
+## Dependencies
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+The primary dependencies used in this project are:
 
-### Advanced Configuration
+- React: A JavaScript library for building user interfaces.
+- XLSX: A library for parsing and creating Excel files.
+- react-loader-spinner: A library for displaying loading spinners.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+## Feedback and Issues
 
-### Deployment
+If you encounter any issues with this application or have feedback to improve it, please [open an issue](https://github.com/<username>/sairam-cws-2/issues) on the GitHub repository.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+---
 
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Feel free to adapt and integrate the MultiSeller Excel File Validation App into your own projects to handle Excel file uploads and data validation for multiple seller files.
