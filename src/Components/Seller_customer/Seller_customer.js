@@ -1,4 +1,4 @@
-import { useState,useEffect } from 'react';
+import { useState } from 'react';
 //import { Rings } from 'react-loader-spinner'
 import * as XLSX from 'xlsx';
 import './index.css';
@@ -11,7 +11,6 @@ const SellerCustomer=()=> {
   const [typeError,setTypeError]=useState(null)
   const [excelData,setExcelData]=useState(null)
   const [invalidData,setInvalidData]=useState(null)
-
   const [form_name,setFormName]=useState('')
     
   // Handling the input file type and storing the excel data in the State
@@ -65,7 +64,7 @@ const SellerCustomer=()=> {
     backgroundColor: "#f5f5f5",
     border: "1px solid #000000",
     textAlign: "left",
-    padding: "8px",
+   
     width: "300px",
     padding:'10px',
     fontFamily: "sans-serif",
@@ -255,6 +254,159 @@ const SellerCustomer=()=> {
     setInvalidData(res);}
   }
 
+  //Checking The All The Feilds Whther Valid Or Not For Seller_Payment_Advice File
+  const handleValidationsForSeller_Payment_Advice=(data1)=>{
+    const data=data1.slice(0,20)
+    const allRowsHaveValidData = data.filter((row) => 
+    row['ERP Customer Code'] && row['Collection Date*'] && row['Amount Received*'] && row['Customer Code'] && row['Customer Legal Name'] && row['Invoice No'] && row['Invoice Date']);
+    setExcelData(allRowsHaveValidData)
+    
+    const allRowsDOntHaveERPCode1 = data.filter((row)=>!row['ERP Customer Code'])
+    const allRowsDOntHaveLegalName = data.filter((row)=>!row['Customer Legal Name'])
+    const allRowsDOntHaveInvoiceNumber = data.filter((row)=>!row['Invoice No'])
+    const allRowsDOntHaveInvoiceDate = data.filter((row)=>!row['Invoice Date'])
+    const allRowsDOntHaveCustomerCode = data.filter((row)=>!row['Customer Code'])
+    const allRowsDOntHaveAmountRecived = data.filter((row)=>!row['Amount Received*'])
+    const allRowsDOntHaveCollectionDate = data.filter((row)=>!row['Collection Date*'])
+    
+    if (allRowsDOntHaveERPCode1.length>0 || allRowsDOntHaveCustomerCode.length>0 || allRowsDOntHaveLegalName.length>0  || allRowsDOntHaveInvoiceNumber.length>0 || allRowsDOntHaveInvoiceDate.length>0 || allRowsDOntHaveCustomerCode.lenght>0 || allRowsDOntHaveAmountRecived.length>0 || allRowsDOntHaveCollectionDate.length>0){
+      
+      const mappedInvalidERPCode =allRowsDOntHaveERPCode1&& allRowsDOntHaveERPCode1.map((row) => {
+        if (!row['ERP Customer Code']) {
+          row['Reason'] = "Invalid ERP Code";
+        }
+        return row;
+      });
+
+      const mappedInvalidLegalName =allRowsDOntHaveLegalName&& allRowsDOntHaveLegalName.map((row) => {
+        if (!row['Customer Legal Name']) {  
+          row['Reason'] = "Invalid Legal Name";  
+        }
+        return row;
+      });
+
+      const mappedInvalidInvoiceNumber =allRowsDOntHaveInvoiceNumber.map((row) => {
+        if (!row['Invoice No']) {
+          row['Reason'] = "Invalid Invoice Number";
+        }
+        return row;
+      });
+
+      const mappedInvalidInvoiceDate =allRowsDOntHaveInvoiceDate&& allRowsDOntHaveInvoiceDate.map((row) => {
+        if (!row['Invoice Date']) {
+          row['Reason'] = "Invalid Invoice Date"; 
+        }
+        return row;
+      });
+
+      const mappedInvalidCustomerCode =allRowsDOntHaveCustomerCode&& allRowsDOntHaveCustomerCode.map((row) => {
+        if (!row['Customer Code']) {
+          row['Reason'] = "Invalid Customer Code";
+        }
+        return row;
+      });
+
+      const mappedInvalidAmountRecived =allRowsDOntHaveAmountRecived&& allRowsDOntHaveAmountRecived.map((row) => {
+        if (!row['Amount Received*']) {
+          row['Reason'] = "Invalid Amount Received";
+        }
+        return row;
+      });
+      
+      const mappedInvalidCollectedDate =allRowsDOntHaveCollectionDate&&allRowsDOntHaveCollectionDate.map((row) => {
+        if (!row['Collection Date*']) {
+          row['Reason'] = "Invalid Collection Date";
+        }
+        return row;
+      });
+
+
+      // concating all invalid data by using spred operator
+      const res = [
+        ...mappedInvalidERPCode,
+        ...mappedInvalidLegalName,
+        ...mappedInvalidInvoiceNumber,
+        ...mappedInvalidInvoiceDate,
+        ...mappedInvalidCustomerCode,
+        ...mappedInvalidAmountRecived,
+        ...mappedInvalidCollectedDate
+      ];
+
+    setInvalidData(res);}
+  }
+
+   //Checking The All The Feilds Whther Valid Or Not For Seller_Payment_Advice File
+   const handleValidationsForSeller_Collections=(data1)=>{
+    const data=data1.slice(0,20)
+    const allRowsHaveValidData = data.filter((row) => 
+    row['ERP Customer Code'] && row['Collection Date*'] && row['Amount Received*'] && row['Customer Code'] && row['Customer Legal Name']  && row['Invoice Date']);
+    setExcelData(allRowsHaveValidData)
+    
+    const allRowsDOntHaveERPCode1 = data.filter((row)=>!row['ERP Customer Code'])
+    const allRowsDOntHaveLegalName = data.filter((row)=>!row['Customer Legal Name'])
+    const allRowsDOntHaveInvoiceNumber = data.filter((row)=>!row['Invoice No'])
+    const allRowsDOntHaveCustomerCode = data.filter((row)=>!row['Customer Code'])
+    const allRowsDOntHaveAmountRecived = data.filter((row)=>!row['Amount Received*'])
+    const allRowsDOntHaveCollectionDate = data.filter((row)=>!row['Collection Date*'])
+    
+    if (allRowsDOntHaveERPCode1.length>0 || allRowsDOntHaveCustomerCode.length>0 || allRowsDOntHaveLegalName.length>0  || allRowsDOntHaveInvoiceNumber.length>0 || allRowsDOntHaveCustomerCode.lenght>0 || allRowsDOntHaveAmountRecived.length>0 || allRowsDOntHaveCollectionDate.length>0){
+      
+      const mappedInvalidERPCode =allRowsDOntHaveERPCode1&& allRowsDOntHaveERPCode1.map((row) => {
+        if (!row['ERP Customer Code']) {
+          row['Reason'] = "Invalid ERP Code";
+        }
+        return row;
+      });
+
+      const mappedInvalidLegalName =allRowsDOntHaveLegalName&& allRowsDOntHaveLegalName.map((row) => {
+        if (!row['Customer Legal Name']) {  
+          row['Reason'] = "Invalid Legal Name";  
+        }
+        return row;
+      });
+
+      const mappedInvalidInvoiceNumber =allRowsDOntHaveInvoiceNumber&&allRowsDOntHaveInvoiceNumber.map((row) => {
+        if (!row['Invoice No']) {
+          row['Reason'] = "Invalid Invoice Number";
+        }
+        return row;
+      });
+      
+      const mappedInvalidCustomerCode =allRowsDOntHaveCustomerCode&& allRowsDOntHaveCustomerCode.map((row) => {
+        if (!row['Customer Code']) {
+          row['Reason'] = "Invalid Customer Code";
+        }
+        return row;
+      });
+
+      const mappedInvalidAmountRecived =allRowsDOntHaveAmountRecived&& allRowsDOntHaveAmountRecived.map((row) => {
+        if (!row['Amount Received*']) {
+          row['Reason'] = "Invalid Amount Received";
+        }
+        return row;
+      });
+      
+      const mappedInvalidCollectedDate =allRowsDOntHaveCollectionDate&&allRowsDOntHaveCollectionDate.map((row) => {
+        if (!row['Collection Date*']) {
+          row['Reason'] = "Invalid Collection Date";
+        }
+        return row;
+      });
+
+
+      // concating all invalid data by using spred operator
+      const res = [
+        ...mappedInvalidERPCode,
+        ...mappedInvalidLegalName,
+        ...mappedInvalidInvoiceNumber,
+        ...mappedInvalidCustomerCode,
+        ...mappedInvalidAmountRecived,
+        ...mappedInvalidCollectedDate
+      ];
+
+    setInvalidData(res);}
+  }
+
   //handling Sumbit Of Excel File
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -270,8 +422,14 @@ const SellerCustomer=()=> {
           handleValidationsForSeller_Customer(data)
           break;
         case 'Seller_invoice.xlsx':
-           handleValidationsForSeller_Invoice(data)
+          handleValidationsForSeller_Invoice(data)
           break;
+        case 'Seller_payment_advice.xlsx':
+          handleValidationsForSeller_Payment_Advice(data)
+          break;
+        case 'Seller_collection.xlsx':
+          handleValidationsForSeller_Collections(data)
+          break
         default:
           break;
       }
@@ -373,7 +531,7 @@ const SellerCustomer=()=> {
 
     </div>
   );
-  
+
 
 }
 
