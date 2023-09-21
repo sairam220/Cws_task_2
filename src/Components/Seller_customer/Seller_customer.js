@@ -1,5 +1,4 @@
 import { useState } from 'react';
-//import { Rings } from 'react-loader-spinner'
 import * as XLSX from 'xlsx';
 import './index.css';
 
